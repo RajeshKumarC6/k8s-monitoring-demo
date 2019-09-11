@@ -1,5 +1,4 @@
-# k8s-monitoring-demo
-
+# Kubernetes Monitoring Demo
 ### What are we going to do:
 - [Run prometheus with docker](https://github.com/ofer-velich/k8s-monitoring-demo/tree/master/01-prometheus-docker-demo)
 - [Run prometheus with the prometheus-operator on minikube](https://github.com/ofer-velich/k8s-monitoring-demo/tree/master/02-prometheus-operator-demo)
