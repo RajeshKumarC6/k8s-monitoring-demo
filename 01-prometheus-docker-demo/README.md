@@ -1,18 +1,18 @@
-# Running prometheus with docker
+# Running Prometheus with Docker
 
-## Requiremets:
+## Requirements:
 - Docker compose
 
 ## Prometheus Overview:
 
 ![Image of Yaktocat](https://cdn.rawgit.com/prometheus/prometheus/e761f0d/documentation/images/architecture.svg)
 
-### What prometheus is?
-- Prometheus is an open source toolkit to monitor and alert with a a buildin TSDB local storage
-- Developed by SoundCloud Started 2012 published on 2015
-- Do not do logging or tracing
-- Support for clients in many languages
-- Provides exporters to connect other application (i.e Postgresql, Mysql, ETCD)
+### What is Prometheus ?
+- Prometheus is an open source toolkit to monitor and alert with a built-in TSDB local storage
+- Developed by SoundCloud, started in 2012 and published in 2015
+- Does not do logging or tracing
+- Supports clients in many languages
+- Provides exporters to connect with other applications (i.e Postgresql, Mysql, ETCD)
 
 ### Why Prometheus?
 - Dimensional data model
@@ -21,8 +21,8 @@
 - Simple to setup
 
 ### Dimensional data model:
-- based on time series metrics (i.e name timestamp and value)
-- dimensional data model, metric name with timestamp and key value labels pairs attached. With this multi dimensional data model you can get more complexed and efficient queries, and one metric can be translated to N time series.
+- Based on time series metrics (i.e name timestamp and value)
+- Dimensional data model, metric name with timestamp and key value labels pairs attached. With this multi dimensional data model you can get more complexed and efficient queries, and one metric can be translated to N time series.
 
 Example of dot separated objects hierarchy (graphite etc) VS dimensional data model (prometheus):
 ```
@@ -61,7 +61,7 @@ $ sum by(path) (rate(http_requests_total{status="500"}[5m])) / sum by(path) (rat
 - in addition to scrape targets, the service discovery can provide target metadata like labels on application type and it's environment
 - scrape metrics under the `/metrics` endpoint by default
 
-### What are the common metrics we scrape on k8s
+### What are the common metrics we scrape on K8S
 - node-exporter expose the machine metrics (cpu load network disk etc)
 - cAdvisor expose the container metrics (cpu load network disk etc)
 - kube-state-metrics expose state metrics of k8s cluster like number of deployment replicas
@@ -92,17 +92,17 @@ $ sum by(path) (rate(http_requests_total{status="500"}[5m])) / sum by(path) (rat
 - Automatic sharding 
 - To be able to query and alert on sharded deployment, Prometheus federation can be used to fan in the relevant servers. 
 
-### Storage And retention
+### Storage and retention
 Configuring Prometheus storage retention
 - `storage.tsdb.retention.size`
 - `storage.tsdb.retention.time`
 
-### Remote Storage
+### Remote storage
 - Remote storage Adapters
 - Remote read, when configured, storage queries are sent to both local and remote storage, and results are merged.
 - Remote writes, work by "tailing" time series samples written to local storage, and queuing them up for write to remote storage.
 
-### Examles
+### Examples
 - Cortex (Weaveworks) - Cortex is an open source SAAS multi-tenant, horizontally scalable version of Prometheus
 - Thanos (Improbable) 
 - Vulcan (Digital Ocean) - use push gate way and metric scrapers that push data to kafka that write it to Cassandra store where the Prometheus is reading from
